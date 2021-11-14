@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+
+{% block title %}My Blog{% endblock %}
+
+{% block content %}
+
+  {% if tag %}
+    <h2>Posts tagged with "{{ tag.name }}"</h2>
+  {% endif %}
+          <div class="bg-faded p-5 d-flex ms-auto rounded">
+          <h2 class="section-heading mb-0">
+          <span class="section-heading-upper">Welcome to the</span>
+          <span class="section-heading-lower">Coffee Colloquy</span>
+          </h2>
+          </div>
+  {% for post in posts %}
+    <div class = "blog-section">
+      <h2 class = "blog-sectin-title">
+
+      <a href="{{ post.get_absolute_url }}">
+        {{ post.title }}
+      </a>
+    </h2>
+    <p class="tags">
+      Tags:
+      {% for tag in post.tags.all %}
+        <a href="{% url 'blog:post_list_by_tag' tag.slug %}">
+          {{ tag.name }}
+        </a>
+        {% if not forloop.last %}, {% endif %}
+      {% endfor %}
+    </p>
+    <p class="date">
+      Published {{ post.publish }} by {{ post.author }}
+    </p>
+    {{ post.body|markdown|truncatewords_html:30 }}
+    </div>
+  {% endfor %}
+
+<div class = "pagination">
+  {% include "pagination.html" with page=posts %}
+</div>
+{% endblock %}
