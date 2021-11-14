@@ -24,8 +24,8 @@ app_name = 'ecommerce'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('store.urls')),
-    path('home/', include('home.urls')),
+    path('', include('home.urls')),
+    path('store/', include('store.urls')),
     path('blog/', include('blog.urls')),
 ]
 
