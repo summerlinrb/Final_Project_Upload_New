@@ -138,7 +138,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT ='staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -158,7 +158,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'blog.email.test.email@gmail.com'
 EMAIL_HOST_PASSWORD = '5k1pp3r9'
-
 
 
 AUTHENTICATION_BACKENDS = [
