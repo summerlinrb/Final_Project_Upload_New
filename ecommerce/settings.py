@@ -25,13 +25,15 @@ SECRET_KEY = 'z+ksf@)0d^qojbh4rnp4b1to$hq&*tt(3bs$gf(3i267g$k9ln'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
 SITE_ID=1
 
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,8 +45,11 @@ INSTALLED_APPS = [
     'taggit',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-
+    'django.contrib.postgres',
     'store.apps.StoreConfig',
+    'social_django',
+    'django_extensions',
+    
 ]
 
 MIDDLEWARE = [
@@ -88,6 +93,14 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'blog',
+#         'USER': 'blog',
+#         'PASSWORD': '*****',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -132,5 +145,37 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/images/'
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+LOGIN_REDIRECT_URL = 'account:dashboard'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'blog.email.test.email@gmail.com'
+# EMAIL_HOST_PASSWORD = '5k1pp3r9'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
+]
+
+SOCIAL_AUTH_FACEBOOK_KEY = ''  # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = ''  # Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_TWITTER_KEY = ''  # Twitter API Key
+SOCIAL_AUTH_TWITTER_SECRET = ''  # Twitter API Secret
+
+# google keys
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '434803969159-hdonuo1jfc6oprb9t9cq7i60o9abubt8.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

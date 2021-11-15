@@ -17,4 +17,7 @@ urlpatterns = [
     path('feed/', LatestPostsFeed(), name='post_feed'),
     path('store/', include('store.urls')),
     path('home/', include('home.urls')),
+    path('search/', views.post_search, name='post_search'),
+    path('account/', include('account.urls'), name="account"),
+
 ]

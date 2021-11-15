@@ -12,4 +12,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('products/', views.products, name='products'),
     path('hours/', views.hours, name='hours'),
+    path('account/', include('account.urls'), name="account"),
+    path('store/', include('store.urls'), name="store"),
 ]

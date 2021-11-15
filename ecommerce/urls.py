@@ -18,7 +18,8 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from store import views
-
+from account import views
+from home import views
 
 app_name = 'ecommerce'
 
@@ -27,6 +28,8 @@ urlpatterns = [
     path('', include('home.urls')),
     path('store/', include('store.urls')),
     path('blog/', include('blog.urls')),
+    path('account/', include('account.urls')),
+    path('social-auth/', include('social_django.urls', namespace='social')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
