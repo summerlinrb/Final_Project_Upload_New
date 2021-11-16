@@ -7,11 +7,11 @@
 </head>
 <body>
   {% include "nav.html" %}
-  <div id="header">
+  <!--<div id="header">
     <span class="logo">User Dashboard</span>
     {% if request.user.is_authenticated %}
     
-      <ul class="menu">
+       <ul class="menu">
         <li {% if "section == dashboard" %}class="selected"{% endif %}>
           <a href="{% url 'account:dashboard' %}">My dashboard</a>
         </li>
@@ -31,7 +31,7 @@
         <a href="{% url 'account:login' %}">Log-in</a>
       {% endif %}
     </span>
-  </div>
+  </div>-->
   
   {% if messages %}
   <ul class="messages">
