@@ -4,7 +4,7 @@ import json
 import datetime
 from .models import * 
 from .utils import cookieCart, cartData, guestOrder
-
+from django.conf.urls.static import static
 
 
 def store(request):
