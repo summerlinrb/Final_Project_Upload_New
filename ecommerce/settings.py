@@ -149,7 +149,7 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = 'images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+MEDIA_ROOT = os.path.join(BASE_DIR, '/var/www/static/images')
 
 LOGIN_REDIRECT_URL = 'account:dashboard'
 LOGIN_URL = 'login'
