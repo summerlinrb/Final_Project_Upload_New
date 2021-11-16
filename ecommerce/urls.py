@@ -30,6 +30,6 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('account/', include('account.urls')),
     path('social-auth/', include('social_django.urls', namespace='social')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
